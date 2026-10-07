@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: northstar-market
+    runtime: node
+    plan: free
+    rootDir: amazon-clone
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_SSL
+        value: "true"
+      - key: SESSION_SECRET
+        generateValue: true
